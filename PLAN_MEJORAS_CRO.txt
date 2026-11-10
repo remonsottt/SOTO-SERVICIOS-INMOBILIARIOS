@@ -1,0 +1,164 @@
+PLAN DE MEJORAS CRO — SOTO SERVICIOS INMOBILIARIOS
+Fecha: Junio 2026
+Estado: Pendiente de implementación
+====================================================
+
+STACK CONFIRMADO
+- Frontend: React 18 + TypeScript + Vite 5 + Tailwind CSS v3
+- Backend: Supabase Edge Functions (Deno)
+- CMS/DB: Notion via Pica API
+- Routing: react-router-dom v7 (SPA)
+- Analytics: GTM + Meta Pixel
+
+FLUJO DE DATOS ACTUAL
+Notion DB → Pica API → Supabase Edge Fn → React Frontend
+Formularios → Supabase Edge Fn → Notion DB
+Propiedades: entrada manual en Idealista/Fotocasa → entrada manual en Notion → web automático
+
+DECISIONES YA TOMADAS
+- P1 (sync portales): No implementar. No hay CRM. Notion es la fuente de verdad. Proceso manual es correcto.
+- P5 (valoración): NO ampliar. Los CSVs solo cubren 4 barrios y no queremos mostrar datos falsos.
+- Valoración: Ocultar de navegación (Opción A), NO borrar archivos. Rutas /valuation siguen activas pero sin enlaces.
+- Landing vendedores: Tono directo y funcional. Prioridad sobre cualquier herramienta de valoración.
+
+====================================================
+ALCANCE DE ESTA ITERACIÓN
+====================================================
+
+PASO 1 — Fixes de rendimiento (P6 parcial) — ~20 min
+------------------------------------------------------
+IMPACTO: Alto. Riesgo: Cero.
+
+Bug 1 — Caché anulado:
+  Archivo: src/components/Properties.tsx línea ~57
+  Fix: Eliminar la línea `propertyService.clearCache()` del loadProperties().
+  Motivo: Se llama en cada render y anula el caché de 5 min configurado
+  en propertyService.ts. Cada visita lanza una llamada nueva a Notion.
+
+Bug 2 — Imágenes sin lazy loading:
+  Archivo: src/components/Properties.tsx (tarjetas de propiedad)
+  Fix: Añadir loading="lazy" a todas las <img> de propiedad.
+  Excepción: la primera imagen visible recibe fetchpriority="high".
+
+Mejora 3 — Preconnect Supabase:
+  Archivo: index.html
+  Fix: Añadir <link rel="preconnect" href="https://zbqmtwfdzuemmleysgmf.supabase.co" />
+  Motivo: Las Edge Functions usan esa URL, no api.supabase.co que ya está en el HTML.
+
+
+PASO 2 — Ocultar valoración de navegación — ~20 min
+------------------------------------------------------
+Archivo: src/components/Header.tsx
+  - Eliminar enlace de navegación a /valuation y /free-valuation
+  - Las rutas siguen activas en main.tsx (no se toca)
+
+Archivos: src/components/Hero.tsx y src/components/Services.tsx
+  - Revisar si hay CTAs a /valuation
+  - Reemplazarlos por CTAs a /vender-mi-piso o #contacto
+
+
+PASO 3 — Botón WhatsApp flotante (P2) — ~2h
+------------------------------------------------------
+ARCHIVO NUEVO: src/components/WhatsAppFloat.tsx
+  - Posición: fixed, bottom-right
+  - Número: +34 691 82 20 53
+  - URL: https://wa.me/34691822053?text=...
+  - Icono: SVG inline de WhatsApp (no depende de lucide)
+  - Color: #223e28 (verde corporativo)
+  - Aparece tras 3 segundos en desktop, inmediato en mobile
+  - Sin cambio en CSP (es un <a href>, no un fetch)
+
+  Lógica de mensaje según ruta (useLocation()):
+    /propiedades/:slug   → "Hola, me interesa la propiedad [slug]. ¿Podéis darme más información?"
+    /vender-mi-piso      → "Hola, quiero vender mi piso y me gustaría que me contactéis"
+    /valuation           → "Hola, me interesa la valoración gratuita de mi propiedad"
+    /contacto            → "Hola, me gustaría hablar con vosotros"
+    default              → "Hola, me gustaría información sobre vuestros servicios inmobiliarios en Valencia"
+
+ARCHIVO MODIFICADO: src/main.tsx
+  - Añadir <WhatsAppFloat /> encima de <Routes>, igual que <Header /> y <Footer />
+
+
+PASO 4 — Landing de vendedores /vender-mi-piso (P3) — ~3-4h
+--------------------------------------------------------------
+TONO: Directo y funcional. Formulario prominente. Optimizado para mobile.
+
+ARCHIVO NUEVO: src/pages/SellerPage.tsx
+  Estructura de la página:
+
+  [ SECCIÓN 1 — Hero ]
+  Título: "Vende tu piso en Valencia sin complicaciones"
+  Subtítulo: "Te acompañamos en todo el proceso. Cuéntanos tu caso."
+  CTA botón ancla → baja al formulario
+
+  [ SECCIÓN 2 — Proceso en 3 pasos ]
+  1. Nos llamas o rellenas el formulario
+  2. Valoramos tu piso gratis y te explicamos el mercado actual
+  3. Gestionamos todo: fotos, visitas, negociación y firma
+
+  [ SECCIÓN 3 — Por qué nosotros ]
+  - Especializados en Campanar, Marxalenes, Benimaclet y La Saïdia
+  - +10 años de experiencia en Valencia
+  - Sin coste hasta que vendas
+  - Gestión completa: documentación, notaría, hipotecas
+
+  [ SECCIÓN 4 — Formulario ]
+  Campos:
+    - Dirección aproximada (text, requerido)
+    - Tipo de inmueble (select: Piso / Casa o chalet / Ático / Local)
+    - Situación actual (select: Vacío / Con inquilino / En hipoteca / Heredado)
+    - Urgencia (select: Quiero vender pronto <3 meses / Normal / Sin prisa)
+    - Teléfono (tel, requerido)
+    - Email (email, opcional)
+    - Acepto política de privacidad (checkbox, requerido)
+  CTA: "Quiero que me contactéis"
+  Backend: reusar contactService.ts con origin: 'Vender mi piso'
+  Tras envío: redirigir a /gracias (ThankYouPage.tsx ya existe)
+
+  [ SECCIÓN 5 — CTA secundario ]
+  "¿Prefieres hablar directamente?"
+  Botón WhatsApp → mensaje "Hola, quiero vender mi piso..."
+
+ARCHIVO MODIFICADO: src/main.tsx
+  - Añadir ruta: <Route path="/vender-mi-piso" element={<SellerPage />} />
+
+ARCHIVO MODIFICADO: src/pages/HomePage.tsx
+  - Añadir CTA "¿Quieres vender tu piso? →" en Hero o Services
+  - Enlaza a /vender-mi-piso
+
+
+====================================================
+PARA LA SIGUIENTE ITERACIÓN (no en este sprint)
+====================================================
+
+P4 — Captación de compradores con alertas (COMPLEJIDAD: ALTA)
+  Requiere:
+  - Nueva tabla Supabase: buyer_alerts (email, zona, tipo, precio_max, habitaciones_min)
+  - Nuevo edge function: buyer-alerts (suscribir/desuscribir)
+  - UI en /propiedades: botón "Guardar búsqueda y recibir alertas"
+  - Cron job que compare propiedades nuevas contra alertas activas
+  - Servicio de email (Resend recomendado, gratis hasta 100 emails/día)
+  Archivos a crear:
+  - src/components/SaveSearchModal.tsx
+  - src/services/alertService.ts
+  - supabase/functions/buyer-alerts/index.ts
+  - supabase/migrations/xxxxx_buyer_alerts_table.sql
+
+P1 — Si en el futuro se contrata un CRM (Inmovilla, Witei, etc.):
+  Conectar CRM → Notion via webhook + n8n/Make
+  Sin tocar código React.
+
+
+====================================================
+ORDEN DE EJECUCIÓN RECOMENDADO
+====================================================
+1. Fix caché Properties.tsx            — 5 min
+2. Lazy loading imágenes               — 10 min
+3. Preconnect Supabase en index.html   — 2 min
+4. Ocultar valoración de Header        — 15 min
+5. Revisar CTAs valoración en Hero/Services — 10 min
+6. WhatsAppFloat.tsx + main.tsx        — 1-2h
+7. SellerPage.tsx completa             — 2-3h
+8. Ruta + CTA en HomePage              — 20 min
+
+TIEMPO TOTAL ESTIMADO: 4-6 horas

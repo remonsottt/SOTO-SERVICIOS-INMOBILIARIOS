@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh repo *)",
+      "Bash(gh api *)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:sotoserviciosinmobiliarios.com)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'perf\\(paso 1\\): no anular cache en Properties, prioridad 1ª imagen, preconnect Supabase real *)",
+      "Bash(curl -sL -o video.mp4 'https://drive.google.com/uc?export=download&id=__TRACKED_VAR__' -w 'http=%{http_code} type=%{content_type} size=%{size_download}\\\\n' --max-time 60)",
+      "mcp__chrome-devtools__navigate_page",
+      "mcp__chrome-devtools__take_screenshot",
+      "mcp__chrome-devtools__evaluate_script",
+      "Bash(git commit -q -m 'fix\\(video\\): evitar punch-through de overlay \\(recuadro blanco con audio\\) *)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "shadcn"
+  ]
+}

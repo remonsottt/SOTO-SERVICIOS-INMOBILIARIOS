@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /blog-editor
+Disallow: /valuation/result
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://sotoserviciosinmobiliarios.com/sitemap.xml

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { sendMetaLead } from '../lib/metaCapi';
 
 const PHONE = '34691822053';
-const BRAND = '#223e28';
+const BRAND = '#28352b';
 
 /** Devuelve el mensaje de WhatsApp segun la ruta actual. */
 function messageForPath(pathname: string): string {

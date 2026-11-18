@@ -59,50 +59,37 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24" style={{ background: '#faf8f5' }}>
+    <section className="py-24 md:py-28 section-mist">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="max-w-3xl mx-auto px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-14 scroll-reveal">
-          <p className="font-sans font-semibold text-xs tracking-widest uppercase mb-4" style={{ color: '#998675' }}>
-            FAQ
-          </p>
-          <h2 className="text-display-sm mb-4" style={{ color: '#0f1f12' }}>
+        <div className="mb-14 scroll-reveal">
+          <h2 className="text-display-sm text-forest-900 mb-4">
             Preguntas frecuentes
           </h2>
-          <p className="font-sans text-lg" style={{ color: '#5e5049' }}>
+          <p className="font-sans text-lg text-mist-600 font-light">
             Resolvemos tus dudas sobre la compra y venta de viviendas
           </p>
         </div>
 
-        {/* Items */}
-        <div className="space-y-3">
+        <div className="divide-y divide-forest-100 border-y border-forest-100">
           {faqData.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div
-                key={index}
-                className="bg-white rounded-2xl overflow-hidden scroll-reveal"
-                style={{
-                  border: isOpen ? '1.5px solid #bfa588' : '1px solid rgba(153,134,117,0.15)',
-                  transition: 'border-color 250ms ease',
-                }}
-              >
+              <div key={index} className="scroll-reveal">
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-forest-700"
-                  style={{ background: 'transparent' }}
+                  className="w-full py-5 flex items-center justify-between text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-forest-700"
+                  aria-expanded={isOpen}
                 >
-                  <span className="font-serif font-semibold text-base pr-4" style={{ color: '#0f1f12' }}>
+                  <span className="font-serif font-semibold text-lg pr-4 text-forest-900">
                     {faq.question}
                   </span>
                   <ChevronDown
-                    className="w-5 h-5 flex-shrink-0"
+                    className="w-5 h-5 flex-shrink-0 text-forest-500"
                     style={{
-                      color: '#998675',
                       transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                       transition: 'transform 250ms ease',
                     }}
@@ -117,10 +104,7 @@ const FAQ = () => {
                     transition: 'max-height 350ms ease, opacity 250ms ease',
                   }}
                 >
-                  <div
-                    className="px-6 pb-6 font-sans text-sm leading-relaxed whitespace-pre-line"
-                    style={{ color: '#5e5049', borderTop: '1px solid rgba(153,134,117,0.12)', paddingTop: '1.25rem' }}
-                  >
+                  <div className="pb-6 font-sans text-sm leading-relaxed whitespace-pre-line text-mist-600">
                     {faq.answer}
                   </div>
                 </div>
@@ -129,9 +113,8 @@ const FAQ = () => {
           })}
         </div>
 
-        {/* CTA */}
-        <div className="mt-14 text-center scroll-reveal">
-          <p className="font-sans text-base mb-5" style={{ color: '#5e5049' }}>
+        <div className="mt-14 scroll-reveal">
+          <p className="font-sans text-base mb-5 text-mist-600">
             ¿Tienes más preguntas? Estamos aquí para ayudarte
           </p>
           <a href="/contacto" className="btn-primary">

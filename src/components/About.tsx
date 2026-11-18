@@ -68,10 +68,10 @@ function AnimatedStat({ number, suffix, label, decimals = 0 }: { number: number;
 
   return (
     <div ref={ref} className="text-center">
-      <p className="font-serif font-bold text-3xl md:text-4xl mb-1 stat-number">
+      <p className="font-serif font-bold text-3xl md:text-4xl mb-1 text-forest-800">
         {display}{suffix}
       </p>
-      <p className="font-sans text-sm" style={{ color: '#7a6a5e' }}>{label}</p>
+      <p className="font-sans text-sm text-mist-600">{label}</p>
     </div>
   );
 }
@@ -90,40 +90,31 @@ const About = () => {
   }, []);
 
   return (
-    <section id="nosotros" className="py-24 bg-white">
+    <section id="nosotros" className="py-24 section-paper">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-
-        {/* Centered intro */}
-        <div className="max-w-3xl mx-auto text-center mb-16 sr">
-          <p className="font-sans font-semibold text-xs tracking-widest uppercase mb-5" style={{ color: '#998675' }}>
-            QUIÉNES SOMOS
-          </p>
-          <h2 className="text-display-sm mb-6" style={{ color: '#0f1f12' }}>
+        <div className="max-w-3xl mb-16 sr">
+          <h2 className="text-display-sm mb-6 text-forest-900">
             Una familia.{' '}
-            <em className="font-serif" style={{ color: '#998675', fontStyle: 'italic' }}>Tu barrio.</em>
+            <em className="font-serif not-italic text-forest-500">Tu barrio.</em>
           </h2>
-          <p className="font-sans text-base leading-relaxed mb-4" style={{ color: '#5e5049' }}>
+          <p className="font-sans text-base leading-relaxed mb-4 text-mist-600">
             Somos una inmobiliaria familiar con más de 10 años en el barrio. Conocemos cada rincón
             de Campanar, La Zaidía, Benimaclet y Marxalenes porque aquí es donde trabajamos, vivimos
             y ayudamos a nuestros vecinos a encontrar su hogar.
           </p>
-          <p className="font-sans text-base leading-relaxed" style={{ color: '#5e5049' }}>
+          <p className="font-sans text-base leading-relaxed text-mist-600">
             Nos importa cada persona que cruza nuestra puerta. No somos una gran cadena, somos un
             equipo cercano que te acompaña en cada paso: desde la primera visita hasta la firma,
             con honestidad y sin prisas.
           </p>
         </div>
 
-        {/* Value props */}
-        <div className="max-w-2xl mx-auto mb-16 sr">
-          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="max-w-3xl mb-16 sr">
+          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {bullets.map((text) => (
-              <li key={text} className="flex items-center gap-3 font-sans text-sm" style={{ color: '#3d3530' }}>
-                <span
-                  className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
-                  style={{ background: '#223e28' }}
-                >
-                  <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+              <li key={text} className="flex items-start gap-3 font-sans text-sm text-mist-700">
+                <span className="mt-0.5 w-5 h-5 rounded-sm flex items-center justify-center flex-shrink-0 bg-forest-700">
+                  <Check className="w-3 h-3 text-white" strokeWidth={3} />
                 </span>
                 {text}
               </li>
@@ -131,11 +122,7 @@ const About = () => {
           </ul>
         </div>
 
-        {/* Stats strip with animated counters */}
-        <div
-          className="rounded-2xl px-8 py-10 grid grid-cols-3 gap-8 mb-20 sr"
-          style={{ background: '#f4efe8' }}
-        >
+        <div className="border border-forest-100 bg-mist-50/80 px-8 py-10 grid grid-cols-3 gap-8 mb-20 sr">
           {stats.map((stat) => (
             <AnimatedStat
               key={stat.label}
@@ -147,35 +134,33 @@ const About = () => {
           ))}
         </div>
 
-        {/* Team */}
-        <div className="text-center mb-12 sr">
-          <h3 className="text-display-sm mb-3" style={{ color: '#0f1f12' }}>Nuestro Equipo</h3>
-          <p className="font-sans text-lg" style={{ color: '#5e5049' }}>
+        <div className="mb-12 sr">
+          <h3 className="text-display-sm mb-3 text-forest-900">Nuestro equipo</h3>
+          <p className="font-sans text-lg text-mist-600 font-light">
             Un equipo familiar que te acompaña de principio a fin
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 max-w-5xl">
           {team.map(({ name, role, image, bio }, i) => (
             <div
               key={name}
-              className="card p-10 text-center sr"
+              className="sr"
               style={{ transitionDelay: `${i * 120}ms` }}
             >
               <img
                 src={image}
                 alt={`${name} — ${role} en Soto Servicios Inmobiliarios`}
-                className="w-36 h-36 rounded-full mx-auto mb-6 object-cover ring-4 ring-sand-100"
+                className="w-full aspect-[4/5] object-cover mb-6"
                 style={{ objectPosition: 'top' }}
                 loading="lazy"
               />
-              <h4 className="font-serif font-semibold text-xl mb-1" style={{ color: '#0f1f12' }}>{name}</h4>
-              <p className="font-sans font-medium text-sm mb-3" style={{ color: '#998675' }}>{role}</p>
-              <p className="font-sans text-sm leading-relaxed" style={{ color: '#7a6a5e' }}>{bio}</p>
+              <h4 className="font-serif font-semibold text-xl mb-1 text-forest-900">{name}</h4>
+              <p className="font-sans font-medium text-sm mb-3 text-forest-500">{role}</p>
+              <p className="font-sans text-sm leading-relaxed text-mist-600">{bio}</p>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

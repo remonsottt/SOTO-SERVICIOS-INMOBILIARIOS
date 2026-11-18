@@ -1,159 +1,117 @@
-import { Home, FileText } from 'lucide-react';
-
 const BuyerSellerInfo = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#223e28] mb-4">
+    <section className="py-24 md:py-28 section-paper">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-2xl mb-16 md:mb-20 scroll-reveal">
+          <h2 className="text-display-sm text-forest-900 mb-4">
             Información para compradores y vendedores
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-mist-600 font-sans font-light leading-relaxed">
             Todo lo que necesitas saber sobre el proceso de compra o venta de tu vivienda
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-          <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-all duration-300">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-[#223e28] rounded-lg flex items-center justify-center">
-                <Home className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-[#223e28]">
-                Si vas a comprar una vivienda
-              </h3>
-            </div>
-            <p className="text-gray-600 mb-8">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-24">
+          <div className="scroll-reveal">
+            <h3 className="font-serif text-2xl md:text-3xl font-semibold text-forest-800 mb-3">
+              Si vas a comprar una vivienda
+            </h3>
+            <p className="text-mist-600 font-sans mb-10 leading-relaxed">
               Conoce los gastos y documentos necesarios para realizar tu compra con total seguridad.
             </p>
 
-            <div className="mb-8">
-              <h4 className="text-lg font-semibold text-[#223e28] mb-4 flex items-center gap-2">
-                <span className="w-2 h-2 bg-[#998675] rounded-full"></span>
+            <div className="mb-10">
+              <h4 className="font-sans text-xs font-semibold tracking-[0.14em] uppercase text-forest-500 mb-5">
                 Gastos habituales del comprador
               </h4>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>ITP o IVA/AJD según el caso</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>Notaría</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>Registro</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>Gestoría (si se contrata)</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>Tasación y gastos de hipoteca (si hay financiación)</span>
-                </li>
+              <ul className="space-y-3.5 border-t border-forest-100 pt-5">
+                {[
+                  'ITP o IVA/AJD según el caso',
+                  'Notaría',
+                  'Registro',
+                  'Gestoría (si se contrata)',
+                  'Tasación y gastos de hipoteca (si hay financiación)',
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 text-mist-700 font-sans text-[0.95rem] leading-relaxed">
+                    <span className="mt-2 h-px w-4 flex-shrink-0 bg-forest-400" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold text-[#223e28] mb-4 flex items-center gap-2">
-                <FileText className="w-5 h-5 text-[#998675]" />
+              <h4 className="font-sans text-xs font-semibold tracking-[0.14em] uppercase text-forest-500 mb-5">
                 Documentación necesaria para comprar
               </h4>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>DNI/NIE en vigor</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>Datos bancarios para pagos</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>Si hay financiación: documentación económica que solicite el banco</span>
-                </li>
+              <ul className="space-y-3.5 border-t border-forest-100 pt-5">
+                {[
+                  'DNI/NIE en vigor',
+                  'Datos bancarios para pagos',
+                  'Si hay financiación: documentación económica que solicite el banco',
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 text-mist-700 font-sans text-[0.95rem] leading-relaxed">
+                    <span className="mt-2 h-px w-4 flex-shrink-0 bg-forest-400" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-all duration-300">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-[#998675] rounded-lg flex items-center justify-center">
-                <FileText className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-[#223e28]">
-                Si vas a vender una vivienda
-              </h3>
-            </div>
-            <p className="text-gray-600 mb-8">
+          <div className="scroll-reveal stagger-2 md:border-l md:border-forest-100 md:pl-16 lg:pl-24">
+            <h3 className="font-serif text-2xl md:text-3xl font-semibold text-forest-800 mb-3">
+              Si vas a vender una vivienda
+            </h3>
+            <p className="text-mist-600 font-sans mb-10 leading-relaxed">
               Infórmate sobre los costes y requisitos documentales para vender tu propiedad.
             </p>
 
-            <div className="mb-8">
-              <h4 className="text-lg font-semibold text-[#223e28] mb-4 flex items-center gap-2">
-                <span className="w-2 h-2 bg-[#998675] rounded-full"></span>
+            <div className="mb-10">
+              <h4 className="font-sans text-xs font-semibold tracking-[0.14em] uppercase text-forest-500 mb-5">
                 Gastos habituales del vendedor
               </h4>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>Plusvalía municipal (IIVTNU), si procede</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>Certificado de eficiencia energética</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>Cancelación registral de hipoteca (si procede)</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>IRPF por ganancia patrimonial (si procede)</span>
-                </li>
+              <ul className="space-y-3.5 border-t border-forest-100 pt-5">
+                {[
+                  'Plusvalía municipal (IIVTNU), si procede',
+                  'Certificado de eficiencia energética',
+                  'Cancelación registral de hipoteca (si procede)',
+                  'IRPF por ganancia patrimonial (si procede)',
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 text-mist-700 font-sans text-[0.95rem] leading-relaxed">
+                    <span className="mt-2 h-px w-4 flex-shrink-0 bg-forest-400" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold text-[#223e28] mb-4 flex items-center gap-2">
-                <FileText className="w-5 h-5 text-[#998675]" />
+              <h4 className="font-sans text-xs font-semibold tracking-[0.14em] uppercase text-forest-500 mb-5">
                 Documentación necesaria para vender
               </h4>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>Escritura / título de propiedad</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>Nota simple (si se solicita)</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>Certificado eficiencia energética</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>Último recibo IBI</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#998675] font-bold mt-1">•</span>
-                  <span>Certificado comunidad sobre deudas (si procede)</span>
-                </li>
+              <ul className="space-y-3.5 border-t border-forest-100 pt-5">
+                {[
+                  'Escritura / título de propiedad',
+                  'Nota simple (si se solicita)',
+                  'Certificado eficiencia energética',
+                  'Último recibo IBI',
+                  'Certificado comunidad sobre deudas (si procede)',
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 text-mist-700 font-sans text-[0.95rem] leading-relaxed">
+                    <span className="mt-2 h-px w-4 flex-shrink-0 bg-forest-400" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 max-w-5xl mx-auto">
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-            <p className="text-sm text-gray-700 leading-relaxed">
-              <span className="font-semibold text-gray-900">Nota:</span> esta información es orientativa y puede variar según la operación. Recomendamos confirmar con notaría y/o asesoría fiscal.
-            </p>
-          </div>
-        </div>
+        <p className="mt-14 max-w-3xl text-sm text-mist-600 font-sans leading-relaxed scroll-reveal">
+          <span className="font-medium text-forest-800">Nota:</span> esta información es orientativa
+          y puede variar según la operación. Recomendamos confirmar con notaría y/o asesoría fiscal.
+        </p>
       </div>
     </section>
   );

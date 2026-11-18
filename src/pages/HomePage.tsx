@@ -36,20 +36,35 @@ const HomePage = () => {
         <Hero />
         <Properties featuredOnly={true} />
 
-        {/* CTA vendedores */}
-        <section className="bg-forest-700 text-white py-16 px-6">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-serif font-bold mb-2">
+        <section className="relative overflow-hidden py-20 md:py-24 px-6">
+          <div
+            className="absolute inset-0"
+            aria-hidden="true"
+            style={{
+              background:
+                'linear-gradient(135deg, #121814 0%, #28352b 55%, #3f4f43 100%)',
+            }}
+          />
+          <div
+            className="absolute inset-0 opacity-30"
+            aria-hidden="true"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12), transparent 40%), radial-gradient(circle at 80% 80%, rgba(40,53,43,0.35), transparent 45%)',
+            }}
+          />
+          <div className="relative max-w-5xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8 text-white">
+            <div className="max-w-xl sr">
+              <h2 className="font-serif text-3xl md:text-5xl font-semibold leading-tight mb-4">
                 ¿Quieres vender tu piso?
               </h2>
-              <p className="text-white/80 font-sans font-light">
+              <p className="text-white/70 font-sans font-light text-lg leading-relaxed">
                 Valoración gratuita y gestión completa. Sin coste hasta que vendas.
               </p>
             </div>
             <Link
               to="/vender-mi-piso"
-              className="inline-flex items-center gap-2 bg-white text-forest-700 font-medium font-sans py-4 px-8 rounded-xl whitespace-nowrap transition-all duration-200 hover:-translate-y-px hover:opacity-90"
+              className="inline-flex items-center gap-2 bg-white text-forest-800 font-medium font-sans py-3.5 px-7 rounded-md whitespace-nowrap transition-all duration-200 hover:-translate-y-px hover:bg-mist-100 sr delay-200"
             >
               Vender mi piso →
             </Link>

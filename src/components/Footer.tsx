@@ -79,7 +79,7 @@ const StarRating = () => (
 );
 
 const Footer = () => (
-  <footer style={{ background: '#0f1f12', color: '#fff' }}>
+  <footer style={{ background: '#1a221c', color: '#fff' }}>
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}

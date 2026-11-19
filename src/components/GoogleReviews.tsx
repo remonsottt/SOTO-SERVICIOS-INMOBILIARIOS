@@ -51,7 +51,7 @@ const GoogleReviews = () => {
 
         {isLoading ? (
           <div className="flex items-center justify-center py-10">
-            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#223e28]"></div>
+            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#28352b]"></div>
           </div>
         ) : (
           <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg">

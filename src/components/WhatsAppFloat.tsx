@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { sendMetaLead } from '../lib/metaCapi';
 
 const PHONE = '34691822053';
-const BRAND = '#223e28';
+const BRAND = '#28352b';
 
 /** Devuelve el mensaje de WhatsApp segun la ruta actual. */
 function messageForPath(pathname: string): string {
@@ -14,7 +14,7 @@ function messageForPath(pathname: string): string {
   if (pathname.startsWith('/vender-mi-piso')) {
     return 'Hola, quiero vender mi piso y me gustaría que me contactéis';
   }
-  if (pathname.startsWith('/valuation') || pathname.startsWith('/free-valuation')) {
+  if (pathname.startsWith('/valoracion') || pathname.startsWith('/valuation') || pathname.startsWith('/free-valuation')) {
     return 'Hola, me interesa la valoración gratuita de mi propiedad';
   }
   if (pathname.startsWith('/contacto')) {

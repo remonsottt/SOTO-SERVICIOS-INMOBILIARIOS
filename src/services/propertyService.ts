@@ -1,6 +1,6 @@
 import { edgeFetch } from '../lib/edgeClient';
 
-const PLACEHOLDER_IMAGE = '/assets/property-fallback-premium.png';
+const PLACEHOLDER_IMAGE = '/assets/property-fallback-premium.webp';
 
 export interface NotionProperty {
   id: string;

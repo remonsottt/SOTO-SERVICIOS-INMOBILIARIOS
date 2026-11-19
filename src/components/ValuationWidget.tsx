@@ -434,7 +434,7 @@ export const ValuationWidget = () => {
         });
       }
 
-      navigate('/valuation/result', {
+      navigate('/valoracion/resultado', {
         state: {
           result: valuationResult,
           propertyData: propertyData,

@@ -1,39 +1,35 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
-import { loadEnv } from 'vite';
+import { vercelApiPlugin } from './vite-plugin-api';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
+  // Expose NOTION_* to the Vite API middleware (server-only; never VITE_-prefixed).
   const env = loadEnv(mode, process.cwd(), '');
-  const supabaseAnonKey = env.VITE_SUPABASE_ANON_KEY;
-
-  const proxyConfig = (target: string) => ({
-    target,
-    changeOrigin: true,
-    rewrite: (path: string) => path.replace(/^\/api\/[a-z-]+/, ''),
-    configure: (proxy: {
-      on: (event: string, handler: (...args: unknown[]) => void) => void;
-    }) => {
-      proxy.on('proxyReq', (proxyReq: { setHeader: (name: string, value: string) => void }) => {
-        if (supabaseAnonKey) {
-          proxyReq.setHeader('Authorization', `Bearer ${supabaseAnonKey}`);
-        }
-      });
-    },
-  });
+  for (const key of [
+    'NOTION_TOKEN',
+    'NOTION_PROPERTIES_DB_ID',
+    'NOTION_BLOG_DB_ID',
+    'NOTION_CONTACTS_DB_ID',
+    'NOTION_VALUATION_DB_ID',
+  ]) {
+    if (env[key] && !process.env[key]) {
+      process.env[key] = env[key];
+    }
+  }
 
   return {
-    plugins: [react()],
+    plugins: [react(), vercelApiPlugin()],
     optimizeDeps: {
       exclude: ['lucide-react'],
     },
     server: {
-      proxy: {
-        '/api/blog': proxyConfig('https://zbqmtwfdzuemmleysgmf.supabase.co/functions/v1/notion-blog'),
-        '/api/properties': proxyConfig('https://zbqmtwfdzuemmleysgmf.supabase.co/functions/v1/notion-properties'),
-        '/api/valuation-leads': proxyConfig('https://zbqmtwfdzuemmleysgmf.supabase.co/functions/v1/notion-valuation'),
-        '/api/contacts': proxyConfig('https://zbqmtwfdzuemmleysgmf.supabase.co/functions/v1/notion-contacts'),
-      },
+      host: '127.0.0.1',
+      port: 5173,
+    },
+    preview: {
+      host: '127.0.0.1',
+      port: 4173,
     },
   };
 });

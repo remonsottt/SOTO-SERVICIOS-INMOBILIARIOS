@@ -44,7 +44,7 @@ export const BlogPost = () => {
 
   if (!post) {
     return <div className="min-h-screen flex items-center justify-center">
-      <p className="text-xl text-gray-600">Cargando...</p>
+      <p className="text-xl text-mist-600">Cargando...</p>
     </div>;
   }
 
@@ -71,7 +71,7 @@ export const BlogPost = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-mist-50">
       <SEO
         title={post.seoTitle || post.title}
         description={post.seoDescription || post.excerpt}
@@ -86,7 +86,7 @@ export const BlogPost = () => {
       <article className="max-w-3xl mx-auto px-4 md:px-6 py-12">
         <Link
           to="/blog"
-          className="inline-flex items-center gap-2 text-[#998675] hover:text-[#223e28] mb-8 transition-colors"
+          className="inline-flex items-center gap-2 text-[#998675] hover:text-[#28352b] mb-8 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           Volver al blog
@@ -94,22 +94,22 @@ export const BlogPost = () => {
 
         <div className="mb-8">
           {post.category && (
-            <div className="inline-block bg-[#223e28] text-white px-4 py-1 rounded-full text-sm mb-4">
+            <div className="inline-block bg-[#28352b] text-white px-4 py-1 rounded-full text-sm mb-4">
               {post.category}
             </div>
           )}
 
-          <h1 className="text-4xl md:text-5xl font-bold text-[#223e28] mb-4 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#28352b] mb-4 leading-tight">
             {post.title}
           </h1>
 
           {post.subtitle && (
-            <p className="text-xl text-gray-600 mb-6">
+            <p className="text-xl text-mist-600 mb-6">
               {post.subtitle}
             </p>
           )}
 
-          <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-6">
+          <div className="flex flex-wrap items-center gap-6 text-mist-600 mb-6">
             {post.author && (
               <div className="flex items-center gap-2">
                 <div className="w-10 h-10 bg-[#998675] rounded-full flex items-center justify-center text-white font-semibold">
@@ -134,31 +134,31 @@ export const BlogPost = () => {
             <div className="relative ml-auto">
               <button
                 onClick={() => setShowShareMenu(!showShareMenu)}
-                className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                className="flex items-center gap-2 px-4 py-2 bg-mist-200 hover:bg-gray-200 rounded-lg transition-colors"
               >
                 <Share2 className="w-4 h-4" />
                 Compartir
               </button>
 
               {showShareMenu && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-10">
+                <div className="absolute right-0 mt-2 w-48 bg-mist-50 rounded-lg shadow-xl border border-mist-300 py-2 z-10">
                   <button
                     onClick={() => handleShare('facebook')}
-                    className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-3"
+                    className="w-full px-4 py-2 text-left hover:bg-mist-100 flex items-center gap-3"
                   >
                     <Facebook className="w-4 h-4" />
                     Facebook
                   </button>
                   <button
                     onClick={() => handleShare('twitter')}
-                    className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-3"
+                    className="w-full px-4 py-2 text-left hover:bg-mist-100 flex items-center gap-3"
                   >
                     <Twitter className="w-4 h-4" />
                     Twitter
                   </button>
                   <button
                     onClick={() => handleShare('linkedin')}
-                    className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-3"
+                    className="w-full px-4 py-2 text-left hover:bg-mist-100 flex items-center gap-3"
                   >
                     <Linkedin className="w-4 h-4" />
                     LinkedIn
@@ -173,7 +173,7 @@ export const BlogPost = () => {
               {post.tags.map(tag => (
                 <span
                   key={tag}
-                  className="inline-flex items-center gap-1 text-sm bg-gray-100 text-gray-700 px-3 py-1 rounded-full"
+                  className="inline-flex items-center gap-1 text-sm bg-mist-200 text-mist-800 px-3 py-1 rounded-full"
                 >
                   <Tag className="w-3 h-3" />
                   {tag}
@@ -202,16 +202,16 @@ export const BlogPost = () => {
       </article>
 
       {relatedPosts.length > 0 && (
-        <div className="bg-gray-50 py-16">
+        <div className="bg-mist-100 py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-[#223e28] mb-8">Artículos Relacionados</h2>
+            <h2 className="text-3xl font-bold text-[#28352b] mb-8">Artículos Relacionados</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {relatedPosts.map((relatedPost) => (
                 <Link
                   key={relatedPost.id}
                   to={`/blog/${relatedPost.slug}`}
-                  className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
+                  className="bg-mist-50 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
                 >
                   {relatedPost.coverImage && (
                     <div className="relative overflow-hidden aspect-[16/10]">
@@ -224,10 +224,10 @@ export const BlogPost = () => {
                   )}
 
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-[#223e28] mb-2 group-hover:text-[#998675] transition-colors line-clamp-2">
+                    <h3 className="text-xl font-bold text-[#28352b] mb-2 group-hover:text-[#998675] transition-colors line-clamp-2">
                       {relatedPost.title}
                     </h3>
-                    <p className="text-gray-600 text-sm line-clamp-2">
+                    <p className="text-mist-600 text-sm line-clamp-2">
                       {relatedPost.excerpt}
                     </p>
                   </div>

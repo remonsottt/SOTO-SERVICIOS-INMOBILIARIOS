@@ -28,7 +28,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen" style={{ background: '#faf8f5' }}>
+    <div className="min-h-screen" style={{ background: '#f7f8f7' }}>
       <Header />
       <Hero />
       <Properties />

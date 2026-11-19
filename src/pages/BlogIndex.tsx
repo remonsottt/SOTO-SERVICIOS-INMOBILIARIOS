@@ -65,13 +65,13 @@ export const BlogIndex = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-xl text-gray-600">Cargando artículos...</p>
+        <p className="text-xl text-mist-600">Cargando artículos...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-mist-50">
       <SEO
         title="Blog Inmobiliario Valencia | Consejos Compra Venta Pisos"
         description="Consejos, tendencias y novedades del mercado inmobiliario en Valencia. Guias practicas para comprar, vender o alquilar tu vivienda en Campanar y Benimaclet."
@@ -80,10 +80,10 @@ export const BlogIndex = () => {
 
       <div className="bg-gradient-to-b from-gray-50 to-white pt-24 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-3xl sm:text-4xl font-light text-[#223e28] mb-4">
+          <h1 className="text-3xl sm:text-4xl font-light text-[#28352b] mb-4">
             Blog Inmobiliario Valencia
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-mist-600 max-w-3xl mx-auto">
             Consejos, tendencias y novedades del sector inmobiliario en Valencia
           </p>
         </div>
@@ -99,7 +99,7 @@ export const BlogIndex = () => {
                 placeholder="Buscar artículos..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#998675] focus:border-transparent"
+                className="w-full pl-12 pr-4 py-3 border border-mist-400 rounded-lg focus:ring-2 focus:ring-[#998675] focus:border-transparent"
               />
             </div>
 
@@ -107,7 +107,7 @@ export const BlogIndex = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#998675] focus:border-transparent"
+                className="px-4 py-3 border border-mist-400 rounded-lg focus:ring-2 focus:ring-[#998675] focus:border-transparent"
               >
                 <option value="all">Todas las Categorías</option>
                 {categories.map(category => (
@@ -120,7 +120,7 @@ export const BlogIndex = () => {
               <select
                 value={selectedTag}
                 onChange={(e) => setSelectedTag(e.target.value)}
-                className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#998675] focus:border-transparent"
+                className="px-4 py-3 border border-mist-400 rounded-lg focus:ring-2 focus:ring-[#998675] focus:border-transparent"
               >
                 <option value="all">Todas las Etiquetas</option>
                 {allTags.map(tag => (
@@ -131,7 +131,7 @@ export const BlogIndex = () => {
           </div>
 
           {(searchQuery || selectedCategory !== 'all' || selectedTag !== 'all') && (
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-mist-600">
               <span>Mostrando {filteredPosts.length} de {posts.length} artículos</span>
               <button
                 onClick={() => {
@@ -149,14 +149,14 @@ export const BlogIndex = () => {
 
         {filteredPosts.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-xl text-gray-600">No se encontraron artículos</p>
+            <p className="text-xl text-mist-600">No se encontraron artículos</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post) => (
               <article
                 key={post.id}
-                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
+                className="bg-mist-50 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
               >
                 <Link to={`/blog/${post.slug}`}>
                   {post.coverImage && (
@@ -168,7 +168,7 @@ export const BlogIndex = () => {
                       />
                       {post.category && (
                         <div className="absolute top-4 left-4">
-                          <span className="bg-[#223e28] text-white px-3 py-1 rounded-full text-sm">
+                          <span className="bg-[#28352b] text-white px-3 py-1 rounded-full text-sm">
                             {post.category}
                           </span>
                         </div>
@@ -178,7 +178,7 @@ export const BlogIndex = () => {
                 </Link>
 
                 <div className="p-6">
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                  <div className="flex items-center gap-4 text-sm text-mist-500 mb-3">
                     <div className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
                       <span>{formatDate(post.publishedAt)}</span>
@@ -192,12 +192,12 @@ export const BlogIndex = () => {
                   </div>
 
                   <Link to={`/blog/${post.slug}`}>
-                    <h2 className="text-2xl font-bold text-[#223e28] mb-3 group-hover:text-[#998675] transition-colors line-clamp-2">
+                    <h2 className="text-2xl font-bold text-[#28352b] mb-3 group-hover:text-[#998675] transition-colors line-clamp-2">
                       {post.title}
                     </h2>
                   </Link>
 
-                  <p className="text-gray-600 mb-4 line-clamp-3">
+                  <p className="text-mist-600 mb-4 line-clamp-3">
                     {post.excerpt}
                   </p>
 
@@ -206,7 +206,7 @@ export const BlogIndex = () => {
                       {post.tags.slice(0, 3).map(tag => (
                         <span
                           key={tag}
-                          className="inline-flex items-center gap-1 text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full"
+                          className="inline-flex items-center gap-1 text-xs bg-mist-200 text-mist-800 px-2 py-1 rounded-full"
                         >
                           <Tag className="w-3 h-3" />
                           {tag}

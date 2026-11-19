@@ -16,9 +16,11 @@ const Header = () => {
   const { pathname } = useLocation();
   const navRef = useRef<HTMLElement>(null);
   const [pillStyle, setPillStyle] = useState<{ left: number; width: number } | null>(null);
+  const isHome = pathname === '/';
+  const overHero = isHome && !scrolled && !isMenuOpen;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 48);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -30,42 +32,63 @@ const Header = () => {
   useEffect(() => {
     if (!navRef.current) return;
     const activeLink = navRef.current.querySelector(`[data-active="true"]`) as HTMLElement | null;
-    if (activeLink) {
+    if (activeLink && !overHero) {
       const navRect = navRef.current.getBoundingClientRect();
       const linkRect = activeLink.getBoundingClientRect();
       setPillStyle({ left: linkRect.left - navRect.left, width: linkRect.width });
     } else {
       setPillStyle(null);
     }
-  }, [pathname]);
+  }, [pathname, overHero]);
 
   const baseStyle: React.CSSProperties = {
     position: 'fixed',
     zIndex: 50,
-    left: scrolled ? 0 : '1rem',
-    right: scrolled ? 0 : '1rem',
-    top: scrolled ? 0 : '1rem',
-    borderRadius: scrolled ? 0 : '1rem',
-    background: 'rgba(250,248,245,0.92)',
-    backdropFilter: 'blur(20px)',
-    WebkitBackdropFilter: 'blur(20px)',
-    borderBottom: scrolled ? '1px solid rgba(153,134,117,0.15)' : '1px solid rgba(153,134,117,0.2)',
-    boxShadow: scrolled ? 'none' : '0 4px 24px -4px rgba(15,31,18,0.10)',
-    transition: 'left 300ms ease, right 300ms ease, top 300ms ease, border-radius 300ms ease, box-shadow 300ms ease',
+    left: 0,
+    right: 0,
+    top: 0,
+    background: overHero
+      ? 'linear-gradient(180deg, rgba(26,34,28,0.45) 0%, rgba(26,34,28,0) 100%)'
+      : 'rgba(247,248,247,0.92)',
+    backdropFilter: overHero ? 'none' : 'blur(18px)',
+    WebkitBackdropFilter: overHero ? 'none' : 'blur(18px)',
+    borderBottom: overHero ? '1px solid transparent' : '1px solid rgba(40,53,43,0.08)',
+    transition: 'background 280ms ease, border-color 280ms ease, backdrop-filter 280ms ease',
   };
+
+  const linkColor = overHero ? 'rgba(255,255,255,0.88)' : '#47534c';
+  const activeColor = overHero ? '#fff' : '#28352b';
+  const iconColor = overHero ? '#fff' : '#28352b';
 
   return (
     <header style={baseStyle}>
       <div className="max-w-7xl mx-auto px-5 lg:px-8">
         <div className="flex items-center justify-between py-3 md:py-4">
-          <Link to="/" className="flex-shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-forest-700">
+          <Link
+            to="/"
+            className="flex-shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-forest-700"
+            aria-label="Soto Servicios Inmobiliarios — inicio"
+          >
             <img
-              src="/imagotipo_verde_6009_definitivo_copy.jpg"
+              src={
+                overHero
+                  ? '/imagotipo_blanco_transparente.png'
+                  : '/imagotipo_blanco+_6009_definitivo_copy.png'
+              }
               alt="Soto Servicios Inmobiliarios"
-              className="h-10 w-auto"
+              className="h-9 md:h-10 w-auto"
               loading="eager"
               style={{ padding: '2px 0' }}
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+              onError={(e) => {
+                const img = e.target as HTMLImageElement;
+                // Prefer white transparent on hero; fall back to two-tone if missing
+                if (overHero && !img.dataset.fallback) {
+                  img.dataset.fallback = '1';
+                  img.src = '/imagotipo_blanco+_6009_definitivo_copy.png';
+                } else {
+                  img.style.display = 'none';
+                }
+              }}
             />
           </Link>
 
@@ -78,7 +101,7 @@ const Header = () => {
                   to={to}
                   data-active={active}
                   className="relative font-sans font-medium text-[0.9375rem] cursor-pointer focus-visible:outline-2 focus-visible:outline-forest-700 link-animated transition-colors duration-200"
-                  style={{ color: active ? '#223e28' : '#5e5049' }}
+                  style={{ color: active ? activeColor : linkColor }}
                 >
                   {label}
                 </Link>
@@ -89,8 +112,13 @@ const Header = () => {
             )}
             <Link
               to="/vender-mi-piso"
-              style={{ background: '#998675' }}
-              className="inline-flex items-center gap-2 text-white text-sm font-medium font-sans py-3 px-6 rounded-xl cursor-pointer transition-all duration-200 hover:opacity-90 hover:-translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand-500"
+              className="inline-flex items-center gap-2 text-sm font-medium font-sans py-2.5 px-5 cursor-pointer transition-all duration-200 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest-500"
+              style={{
+                background: overHero ? 'rgba(255,255,255,0.14)' : '#28352b',
+                color: '#fff',
+                border: overHero ? '1px solid rgba(255,255,255,0.35)' : '1px solid transparent',
+                borderRadius: '0.375rem',
+              }}
             >
               Vender mi piso
             </Link>
@@ -99,8 +127,13 @@ const Header = () => {
           <div className="md:hidden flex items-center gap-3">
             <Link
               to="/vender-mi-piso"
-              style={{ background: '#998675' }}
-              className="inline-flex items-center text-white text-xs font-medium font-sans py-2 px-4 rounded-xl cursor-pointer transition-opacity duration-200 hover:opacity-90"
+              className="inline-flex items-center text-xs font-medium font-sans py-2 px-3.5 cursor-pointer transition-opacity duration-200 hover:opacity-90"
+              style={{
+                background: overHero ? 'rgba(255,255,255,0.14)' : '#28352b',
+                color: '#fff',
+                border: overHero ? '1px solid rgba(255,255,255,0.35)' : 'none',
+                borderRadius: '0.375rem',
+              }}
             >
               Vender
             </Link>
@@ -108,7 +141,7 @@ const Header = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 cursor-pointer focus-visible:outline-2 focus-visible:outline-forest-700"
               aria-label={isMenuOpen ? 'Cerrar menu' : 'Abrir menu'}
-              style={{ color: '#223e28' }}
+              style={{ color: iconColor }}
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -123,7 +156,7 @@ const Header = () => {
             transition: 'max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease',
           }}
         >
-          <div className="py-5 border-t" style={{ borderColor: 'rgba(153,134,117,0.15)' }}>
+          <div className="py-5 border-t" style={{ borderColor: 'rgba(40,53,43,0.1)' }}>
             <nav className="flex flex-col gap-5">
               {navLinks.map(({ to, label }, i) => (
                 <Link
@@ -131,7 +164,7 @@ const Header = () => {
                   to={to}
                   className="font-sans font-medium text-base cursor-pointer menu-item-enter"
                   style={{
-                    color: pathname === to ? '#223e28' : '#5e5049',
+                    color: pathname === to ? '#28352b' : '#47534c',
                     animationDelay: isMenuOpen ? `${i * 60}ms` : '0ms',
                   }}
                   onClick={() => setIsMenuOpen(false)}

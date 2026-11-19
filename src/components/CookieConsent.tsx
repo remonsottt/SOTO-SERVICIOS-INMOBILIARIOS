@@ -153,8 +153,8 @@ export const CookieConsent = () => {
         {!showSettings ? (
           <div className="p-6 md:p-8">
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-[#223e28]/10 rounded-full flex items-center justify-center">
-                <Cookie className="w-6 h-6 text-[#223e28]" />
+              <div className="flex-shrink-0 w-12 h-12 bg-[#28352b]/10 rounded-full flex items-center justify-center">
+                <Cookie className="w-6 h-6 text-[#28352b]" />
               </div>
 
               <div className="flex-1">
@@ -169,11 +169,11 @@ export const CookieConsent = () => {
                 <p className="text-xs text-gray-500 mb-4">
                   Al hacer clic en "Aceptar todas", aceptas el almacenamiento de cookies en tu dispositivo.
                   Consulta nuestra{' '}
-                  <a href="/es/cookies" className="text-[#223e28] hover:underline">
+                  <a href="/cookies" className="text-[#28352b] hover:underline">
                     Política de Cookies
                   </a>
                   {' '}y{' '}
-                  <a href="/es/privacidad" className="text-[#223e28] hover:underline">
+                  <a href="/privacidad" className="text-[#28352b] hover:underline">
                     Política de Privacidad
                   </a>
                   {' '}para más información.
@@ -182,7 +182,7 @@ export const CookieConsent = () => {
                 <div className="flex flex-col sm:flex-row gap-3">
                   <button
                     onClick={acceptAll}
-                    className="px-6 py-3 bg-[#223e28] text-white rounded-lg hover:bg-[#28352b] transition-colors font-medium"
+                    className="px-6 py-3 bg-[#28352b] text-white rounded-lg hover:bg-[#1a221c] transition-colors font-medium"
                   >
                     Aceptar todas
                   </button>
@@ -257,7 +257,7 @@ export const CookieConsent = () => {
                     onChange={(e) => setPreferences({ ...preferences, analytics: e.target.checked })}
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#223e28]/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#223e28]"></div>
+                  <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#28352b]/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#28352b]"></div>
                 </label>
               </div>
 
@@ -275,7 +275,7 @@ export const CookieConsent = () => {
                     onChange={(e) => setPreferences({ ...preferences, marketing: e.target.checked })}
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#223e28]/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#223e28]"></div>
+                  <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#28352b]/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#28352b]"></div>
                 </label>
               </div>
             </div>
@@ -283,7 +283,7 @@ export const CookieConsent = () => {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={savePreferences}
-                className="px-6 py-3 bg-[#223e28] text-white rounded-lg hover:bg-[#28352b] transition-colors font-medium"
+                className="px-6 py-3 bg-[#28352b] text-white rounded-lg hover:bg-[#1a221c] transition-colors font-medium"
               >
                 Guardar preferencias
               </button>

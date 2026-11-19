@@ -46,7 +46,7 @@ const PropertyDetailPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen pt-32 pb-20 bg-gray-50 flex items-center justify-center">
-        <Loader2 className="w-12 h-12 text-[#223e28] animate-spin" />
+        <Loader2 className="w-12 h-12 text-[#28352b] animate-spin" />
       </div>
     );
   }
@@ -61,7 +61,7 @@ const PropertyDetailPage = () => {
           </p>
           <button
             onClick={() => navigate('/propiedades')}
-            className="bg-[#223e28] text-white px-8 py-3 rounded-xl hover:bg-[#28352b] transition-all duration-300 font-medium"
+            className="bg-[#28352b] text-white px-8 py-3 rounded-xl hover:bg-[#1a221c] transition-all duration-300 font-medium"
           >
             Ver todas las propiedades
           </button>
@@ -153,7 +153,7 @@ const PropertyDetailPage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <button
             onClick={() => navigate('/propiedades')}
-            className="flex items-center text-gray-600 hover:text-[#223e28] mb-8 transition-colors"
+            className="flex items-center text-gray-600 hover:text-[#28352b] mb-8 transition-colors"
           >
             <ChevronLeft className="w-5 h-5 mr-1" />
             Volver a propiedades
@@ -168,7 +168,7 @@ const PropertyDetailPage = () => {
                   <span className="text-lg">{property.location}</span>
                 </div>
                 <div className="flex items-center justify-between mb-6">
-                  <div className="text-4xl font-medium text-[#223e28]">{property.price}</div>
+                  <div className="text-4xl font-medium text-[#28352b]">{property.price}</div>
                   <div className="flex items-center space-x-6 text-gray-600">
                     <div className="flex items-center space-x-2">
                       <Square className="w-5 h-5" />
@@ -189,12 +189,12 @@ const PropertyDetailPage = () => {
               <div className="relative mb-12 md:mb-16">
                 <div className="relative h-[300px] md:h-[500px] rounded-2xl overflow-hidden">
                   <img
-                    src={property.images[currentImageIndex] || '/assets/property-fallback-premium.png'}
+                    src={property.images[currentImageIndex] || '/assets/property-fallback-premium.webp'}
                     alt={`${property.title} - Imagen ${currentImageIndex + 1}`}
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = '/assets/property-fallback-premium.png';
+                      target.src = '/assets/property-fallback-premium.webp';
                     }}
                   />
                   {property.images.length > 1 && (
@@ -225,16 +225,16 @@ const PropertyDetailPage = () => {
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
                         className={`flex-shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden border-2 transition-all ${
-                          index === currentImageIndex ? 'border-[#223e28]' : 'border-transparent'
+                          index === currentImageIndex ? 'border-[#28352b]' : 'border-transparent'
                         }`}
                       >
                         <img
-                          src={image || '/assets/property-fallback-premium.png'}
+                          src={image || '/assets/property-fallback-premium.webp'}
                           alt={`Miniatura ${index + 1}`}
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
-                            target.src = '/assets/property-fallback-premium.png';
+                            target.src = '/assets/property-fallback-premium.webp';
                           }}
                         />
                       </button>
@@ -248,14 +248,14 @@ const PropertyDetailPage = () => {
                 <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex items-center space-x-3">
-                      <Building2 className="w-5 h-5 text-[#223e28]" />
+                      <Building2 className="w-5 h-5 text-[#28352b]" />
                       <div>
                         <div className="text-sm text-gray-500">Tipo</div>
                         <div className="font-medium text-gray-900">{property.type}</div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <Square className="w-5 h-5 text-[#223e28]" />
+                      <Square className="w-5 h-5 text-[#28352b]" />
                       <div>
                         <div className="text-sm text-gray-500">Superficie construida</div>
                         <div className="font-medium text-gray-900">{property.area} m²</div>
@@ -263,7 +263,7 @@ const PropertyDetailPage = () => {
                     </div>
                     {property.usefulArea && (
                       <div className="flex items-center space-x-3">
-                        <Square className="w-5 h-5 text-[#223e28]" />
+                        <Square className="w-5 h-5 text-[#28352b]" />
                         <div>
                           <div className="text-sm text-gray-500">Superficie útil</div>
                           <div className="font-medium text-gray-900">{property.usefulArea} m²</div>
@@ -271,21 +271,21 @@ const PropertyDetailPage = () => {
                       </div>
                     )}
                     <div className="flex items-center space-x-3">
-                      <Bed className="w-5 h-5 text-[#223e28]" />
+                      <Bed className="w-5 h-5 text-[#28352b]" />
                       <div>
                         <div className="text-sm text-gray-500">Habitaciones</div>
                         <div className="font-medium text-gray-900">{property.beds}</div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <Bath className="w-5 h-5 text-[#223e28]" />
+                      <Bath className="w-5 h-5 text-[#28352b]" />
                       <div>
                         <div className="text-sm text-gray-500">Baños</div>
                         <div className="font-medium text-gray-900">{property.baths}</div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#223e28]" />
+                      <CheckCircle2 className="w-5 h-5 text-[#28352b]" />
                       <div>
                         <div className="text-sm text-gray-500">Estado</div>
                         <div className="font-medium text-gray-900">{property.state}</div>
@@ -293,7 +293,7 @@ const PropertyDetailPage = () => {
                     </div>
                     {property.floor && (
                       <div className="flex items-center space-x-3">
-                        <Building2 className="w-5 h-5 text-[#223e28]" />
+                        <Building2 className="w-5 h-5 text-[#28352b]" />
                         <div>
                           <div className="text-sm text-gray-500">Planta</div>
                           <div className="font-medium text-gray-900">{property.floor}</div>
@@ -301,21 +301,21 @@ const PropertyDetailPage = () => {
                       </div>
                     )}
                     <div className="flex items-center space-x-3">
-                      <ArrowUp className="w-5 h-5 text-[#223e28]" />
+                      <ArrowUp className="w-5 h-5 text-[#28352b]" />
                       <div>
                         <div className="text-sm text-gray-500">Ascensor</div>
                         <div className="font-medium text-gray-900">{property.elevator ? 'Sí' : 'No'}</div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <Car className="w-5 h-5 text-[#223e28]" />
+                      <Car className="w-5 h-5 text-[#28352b]" />
                       <div>
                         <div className="text-sm text-gray-500">Plaza de garaje</div>
                         <div className="font-medium text-gray-900">{property.garage ? 'Sí' : 'No'}</div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <TreeDeciduous className="w-5 h-5 text-[#223e28]" />
+                      <TreeDeciduous className="w-5 h-5 text-[#28352b]" />
                       <div>
                         <div className="text-sm text-gray-500">Terraza/Balcón</div>
                         <div className="font-medium text-gray-900">{property.terrace ? 'Sí' : 'No'}</div>
@@ -323,7 +323,7 @@ const PropertyDetailPage = () => {
                     </div>
                     {property.yearBuilt && (
                       <div className="flex items-center space-x-3">
-                        <Calendar className="w-5 h-5 text-[#223e28]" />
+                        <Calendar className="w-5 h-5 text-[#28352b]" />
                         <div>
                           <div className="text-sm text-gray-500">Año de construcción</div>
                           <div className="font-medium text-gray-900">{property.yearBuilt}</div>
@@ -332,7 +332,7 @@ const PropertyDetailPage = () => {
                     )}
                     {property.energyCertificate && (
                       <div className="flex items-center space-x-3">
-                        <CheckCircle2 className="w-5 h-5 text-[#223e28]" />
+                        <CheckCircle2 className="w-5 h-5 text-[#28352b]" />
                         <div>
                           <div className="text-sm text-gray-500">Certificado energético</div>
                           <div className="font-medium text-gray-900">{property.energyCertificate}</div>
@@ -359,7 +359,7 @@ const PropertyDetailPage = () => {
                         key={index}
                         className="inline-flex items-center bg-gray-50 text-gray-700 px-4 py-2 rounded-full text-sm border border-gray-200"
                       >
-                        <Check className="w-4 h-4 mr-2 text-[#223e28]" />
+                        <Check className="w-4 h-4 mr-2 text-[#28352b]" />
                         {feature}
                       </span>
                     ))}
@@ -400,7 +400,7 @@ const PropertyDetailPage = () => {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#223e28] focus:border-transparent transition-all"
+                          className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#28352b] focus:border-transparent transition-all"
                           placeholder="Tu nombre completo"
                         />
                       </div>
@@ -418,7 +418,7 @@ const PropertyDetailPage = () => {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#223e28] focus:border-transparent transition-all"
+                          className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#28352b] focus:border-transparent transition-all"
                           placeholder="tu@email.com"
                         />
                       </div>
@@ -435,7 +435,7 @@ const PropertyDetailPage = () => {
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#223e28] focus:border-transparent transition-all"
+                          className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#28352b] focus:border-transparent transition-all"
                           placeholder="600 000 000"
                         />
                       </div>
@@ -452,7 +452,7 @@ const PropertyDetailPage = () => {
                           value={formData.message}
                           onChange={handleChange}
                           rows={4}
-                          className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#223e28] focus:border-transparent transition-all resize-none"
+                          className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#28352b] focus:border-transparent transition-all resize-none"
                           placeholder="Me gustaría recibir más información sobre esta propiedad..."
                         />
                       </div>
@@ -465,11 +465,11 @@ const PropertyDetailPage = () => {
                         checked={formData.acceptPolicy}
                         onChange={handleChange}
                         required
-                        className="mt-1 w-4 h-4 text-[#223e28] border-gray-300 rounded focus:ring-[#223e28]"
+                        className="mt-1 w-4 h-4 text-[#28352b] border-gray-300 rounded focus:ring-[#28352b]"
                       />
                       <label className="ml-3 text-sm text-gray-600">
                         He leído y acepto la{' '}
-                        <a href="/es/privacidad" target="_blank" rel="noopener noreferrer" className="text-[#223e28] hover:underline">
+                        <a href="/privacidad" target="_blank" rel="noopener noreferrer" className="text-[#28352b] hover:underline">
                           Política de Privacidad
                         </a>{' '}
                         *
@@ -479,7 +479,7 @@ const PropertyDetailPage = () => {
                     <button
                       type="submit"
                       disabled={!isFormValid}
-                      className="w-full bg-[#223e28] text-white px-8 py-4 rounded-xl hover:bg-[#28352b] transition-all duration-300 font-medium disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      className="w-full bg-[#28352b] text-white px-8 py-4 rounded-xl hover:bg-[#1a221c] transition-all duration-300 font-medium disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
                       {isSubmitting ? (
                         <>

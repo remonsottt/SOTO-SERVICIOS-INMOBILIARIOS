@@ -136,7 +136,7 @@ const Contact = () => {
             
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="bg-[#223e28] rounded-full p-3">
+                <div className="bg-[#28352b] rounded-full p-3">
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -149,7 +149,7 @@ const Contact = () => {
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="bg-[#223e28] rounded-full p-3">
+                <div className="bg-[#28352b] rounded-full p-3">
                   <Phone className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -160,7 +160,7 @@ const Contact = () => {
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="bg-[#223e28] rounded-full p-3">
+                <div className="bg-[#28352b] rounded-full p-3">
                   <Mail className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -170,7 +170,7 @@ const Contact = () => {
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="bg-[#223e28] rounded-full p-3">
+                <div className="bg-[#28352b] rounded-full p-3">
                   <Clock className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -189,7 +189,7 @@ const Contact = () => {
             {/* Location Card */}
             <div className="mt-8 bg-gray-50 rounded-2xl p-6 shadow-lg border border-gray-100">
               <h4 className="font-semibold text-gray-900 mb-4 flex items-center">
-                <MapPin className="w-5 h-5 mr-2 text-[#223e28]" />
+                <MapPin className="w-5 h-5 mr-2 text-[#28352b]" />
                 Nuestra Ubicación
               </h4>
               <p className="text-gray-700 mb-4">
@@ -200,7 +200,7 @@ const Contact = () => {
                 href="https://www.google.com/maps/place/Avinguda+de+Burjassot,+46009+Val%C3%A8ncia"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 bg-[#223e28] text-white px-6 py-3 rounded-xl hover:bg-[#28352b] transition-all duration-300 font-medium shadow-apple hover-lift"
+                className="inline-flex items-center space-x-2 bg-[#28352b] text-white px-6 py-3 rounded-xl hover:bg-[#1a221c] transition-all duration-300 font-medium shadow-apple hover-lift"
               >
                 <ExternalLink className="w-4 h-4" />
                 <span>Ver en Google Maps</span>
@@ -258,7 +258,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     disabled={isSubmitting}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#223e28] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#28352b] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
                     placeholder="Tu nombre"
                   />
                 </div>
@@ -274,7 +274,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     disabled={isSubmitting}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#223e28] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#28352b] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
                     placeholder="Tus apellidos"
                   />
                 </div>
@@ -292,7 +292,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     disabled={isSubmitting}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#223e28] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#28352b] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
                     placeholder="tu@email.com"
                   />
                 </div>
@@ -307,7 +307,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     disabled={isSubmitting}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#223e28] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#28352b] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
                     placeholder="+34 123 456 789"
                   />
                 </div>
@@ -322,7 +322,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   disabled={isSubmitting}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#223e28] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#28352b] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
                 >
                   <option>Consulta general</option>
                   <option>Quiero vender mi propiedad</option>
@@ -343,7 +343,7 @@ const Contact = () => {
                   required
                   disabled={isSubmitting}
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#223e28] focus:border-transparent resize-none disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#28352b] focus:border-transparent resize-none disabled:bg-gray-100 disabled:cursor-not-allowed"
                   placeholder="Cuéntanos en qué podemos ayudarte..."
                 ></textarea>
               </div>
@@ -357,11 +357,11 @@ const Contact = () => {
                   onChange={handleChange}
                   disabled={isSubmitting}
                   required
-                  className="mt-1 w-4 h-4 text-[#223e28] border-gray-300 rounded focus:ring-[#223e28] disabled:cursor-not-allowed"
+                  className="mt-1 w-4 h-4 text-[#28352b] border-gray-300 rounded focus:ring-[#28352b] disabled:cursor-not-allowed"
                 />
                 <label htmlFor="privacy" className="text-sm text-gray-600">
                   Acepto la{' '}
-                  <a href="/es/privacidad" target="_blank" rel="noopener noreferrer" className="text-[#223e28] hover:underline font-medium">
+                  <a href="/privacidad" target="_blank" rel="noopener noreferrer" className="text-[#28352b] hover:underline font-medium">
                     política de privacidad
                   </a>
                   {' '}y el tratamiento de mis datos personales *
@@ -371,7 +371,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#223e28] text-white px-8 py-4 rounded-lg hover:bg-[#28352b] transition-colors flex items-center justify-center space-x-2 font-semibold hover-lift disabled:bg-gray-400 disabled:cursor-not-allowed"
+                className="w-full bg-[#28352b] text-white px-8 py-4 rounded-lg hover:bg-[#1a221c] transition-colors flex items-center justify-center space-x-2 font-semibold hover-lift disabled:bg-gray-400 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>

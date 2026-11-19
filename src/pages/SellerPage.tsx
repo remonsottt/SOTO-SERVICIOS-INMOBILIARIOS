@@ -60,7 +60,7 @@ const OBJECTIONS = [
 ];
 
 const inputClass =
-  'w-full bg-white border border-sand-200 text-forest-900 placeholder-forest-900/35 rounded-xl px-4 py-3.5 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-forest-700/30 focus:border-forest-700 transition-colors duration-200';
+  'w-full bg-mist-50 border border-sand-200 text-forest-900 placeholder-forest-900/35 rounded-xl px-4 py-3.5 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-forest-700/30 focus:border-forest-700 transition-colors duration-200';
 
 const SellerPage: React.FC = () => {
   const navigate = useNavigate();
@@ -195,7 +195,7 @@ const SellerPage: React.FC = () => {
             </div>
 
             {/* Right: Form */}
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-sand-100">
+            <div className="bg-mist-50 rounded-2xl p-6 md:p-8 shadow-lg border border-sand-100">
               <h2 className="text-xl font-serif font-bold text-forest-900 mb-1">
                 Pide tu orientación de precio
               </h2>
@@ -305,7 +305,7 @@ const SellerPage: React.FC = () => {
                   />
                   <span>
                     Acepto la{' '}
-                    <a href="/es/privacidad" className="text-forest-700 underline">
+                    <a href="/privacidad" className="text-forest-700 underline">
                       política de privacidad
                     </a>.
                   </span>
@@ -384,7 +384,7 @@ const SellerPage: React.FC = () => {
                   text: 'Te damos precio orientativo, demanda real y una estrategia antes de que decidas nada.',
                 },
               ].map(({ icon: Icon, title, text }) => (
-                <div key={title} className="bg-white rounded-xl p-6 border border-sand-100">
+                <div key={title} className="bg-mist-50 rounded-xl p-6 border border-sand-100">
                   <div className="w-10 h-10 rounded-xl bg-forest-50 flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5 text-forest-700" />
                   </div>
@@ -397,7 +397,7 @@ const SellerPage: React.FC = () => {
         </section>
 
         {/* ═══════ 5. CÓMO FUNCIONA ═══════ */}
-        <section className="py-20 px-6 bg-white">
+        <section className="py-20 px-6 bg-mist-50">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-serif font-bold text-forest-900 text-center mb-14">
               Cómo funciona
@@ -456,7 +456,7 @@ const SellerPage: React.FC = () => {
         {/* ═══════ 6. AUTORIDAD LOCAL ═══════ */}
         <section className="py-20 px-6">
           <div className="max-w-3xl mx-auto">
-            <div className="bg-white rounded-2xl border border-sand-100 p-8 md:p-10 text-center">
+            <div className="bg-mist-50 rounded-2xl border border-sand-100 p-8 md:p-10 text-center">
               <span className="inline-flex items-center gap-2 text-xs font-sans font-semibold uppercase tracking-widest text-forest-700 mb-5">
                 <MapPin className="w-4 h-4" /> Conocemos el barrio
               </span>
@@ -479,7 +479,7 @@ const SellerPage: React.FC = () => {
         </section>
 
         {/* ═══════ 7. PRUEBA SOCIAL HUMANA COMPACTA ═══════ */}
-        <section className="py-20 px-6 bg-white">
+        <section className="py-20 px-6 bg-mist-50">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
               <h2 className="text-3xl font-serif font-bold text-forest-900 mb-3">
@@ -561,7 +561,7 @@ const SellerPage: React.FC = () => {
             </h2>
             <div className="space-y-3">
               {OBJECTIONS.map(({ q, a }, i) => (
-                <div key={q} className="bg-white rounded-xl border border-sand-100 overflow-hidden">
+                <div key={q} className="bg-mist-50 rounded-xl border border-sand-100 overflow-hidden">
                   <button
                     type="button"
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
